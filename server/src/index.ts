@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import mongoose from 'mongoose';
 import cors from "cors"
 import dotenv from 'dotenv';
@@ -10,6 +10,10 @@ dotenv.config();
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+app.get("/", (req:Request, res:Response) => {
+  res.send("Backend API is running");
+})
 
 app.use("/api/events",eventsrouter);
 app.use("/api/analytics",analyticsrouter);
